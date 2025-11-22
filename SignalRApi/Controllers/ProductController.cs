@@ -91,22 +91,22 @@ namespace SignalRApi.Controllers
 
 
 
-        //[HttpGet("ProductListWithCategory")]
-        //public IActionResult ProductListWithCategory()
-        //{
-        //    var context = new SignalRContext();
-        //    var values = context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategory
-        //    {
-        //        Description = y.Description,
-        //        ImageUrl = y.ImageUrl,
-        //        Price = y.Price,
-        //        ProductID = y.ProductID,
-        //        ProductName = y.ProductName,
-        //        ProductStatus = y.ProductStatus,
-        //        CategoryName = y.Category.CategoryName
-        //    });
-        //    return Ok(values.ToList());
-        //}
+        [HttpGet("ProductListWithCategory")]
+        public IActionResult ProductListWithCategory()
+        {
+            var context = new SignalRContext();
+            var values = context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategory
+            {
+                Description = y.Description,
+                ImageUrl = y.ImageUrl,
+                Price = y.Price,
+                ProductId = y.ProductId,
+                ProductName = y.ProductName,
+                ProductStatus = y.ProductStatus,
+                CategoryName = y.Category.CategoryName
+            });
+            return Ok(values.ToList());
+        }
 
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProductDto)
