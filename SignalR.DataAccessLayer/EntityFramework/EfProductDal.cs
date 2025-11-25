@@ -17,72 +17,77 @@ namespace SignalR.DataAccessLayer.EntityFramework
         {
         }
 
+        public List<Product> GetLast9Products()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetProductsWithCategories()
         {
             var context = new SignalRContext();
             var values = context.Products.Take(9).ToList();
             return values;
         }
-        //public decimal ProductAvgPriceByHamburger()
-        //{
-        //    using var context = new SignalRContext();
-        //    return context.Products.Where(x => x.CategoryId == (context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryId).FirstOrDefault())).Average(w => w.Price);
-        //}
+        public decimal ProductAvgPriceByHamburger()
+        {
+            using var context = new SignalRContext();
+            return context.Products.Where(x => x.CategoryId == (context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryId).FirstOrDefault())).Average(w => w.Price);
+        }
 
-        //public int ProductCount()
-        //{
-        //    using var context = new SignalRContext();
-        //    return context.Products.Count();
-        //}
+        public int ProductCount()
+        {
+            using var context = new SignalRContext();
+            return context.Products.Count();
+        }
 
-        //public int ProductCountByCategoryNameDrink()
-        //{
-        //    using var context = new SignalRContext();
-        //    return context.Products.Where(x => x.CategoryId == (context.Categories.Where(y => y.CategoryName == "İçecek").Select(z => z.CategoryId).FirstOrDefault())).Count();
-        //}
+        public int ProductCountByCategoryNameDrink()
+        {
+            using var context = new SignalRContext();
+            return context.Products.Where(x => x.CategoryId == (context.Categories.Where(y => y.CategoryName == "İçecek").Select(z => z.CategoryId).FirstOrDefault())).Count();
+        }
 
-        //public int ProductCountByCategoryNameHamburger()
-        //{
-        //    using var context = new SignalRContext();
-        //    return context.Products.Where(x => x.CategoryId == (context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryId).FirstOrDefault())).Count();
-        //}
+        public int ProductCountByCategoryNameHamburger()
+        {
+            using var context = new SignalRContext();
+            return context.Products.Where(x => x.CategoryId == (context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryId).FirstOrDefault())).Count();
+        }
 
-        //public string ProductNameByMaxPrice()
-        //{
-        //    using var context = new SignalRContext();
-        //    return context.Products.Where(x => x.Price == (context.Products.Max(y => y.Price))).Select(z => z.ProductName).FirstOrDefault();
-        //}
+        public string ProductNameByMaxPrice()
+        {
+            using var context = new SignalRContext();
+            return context.Products.Where(x => x.Price == (context.Products.Max(y => y.Price))).Select(z => z.ProductName).FirstOrDefault();
+        }
 
-        //public string ProductNameByMinPrice()
-        //{
-        //    using var context = new SignalRContext();
-        //    return context.Products.Where(x => x.Price == (context.Products.Min(y => y.Price))).Select(z => z.ProductName).FirstOrDefault();
-        //}
+        public string ProductNameByMinPrice()
+        {
+            using var context = new SignalRContext();
+            return context.Products.Where(x => x.Price == (context.Products.Min(y => y.Price))).Select(z => z.ProductName).FirstOrDefault();
+        }
 
-        //public decimal ProductPriceAvg()
-        //{
-        //    using var context = new SignalRContext();
-        //    return context.Products.Average(x => x.Price);
-        //}
+        public decimal ProductPriceAvg()
+        {
+            using var context = new SignalRContext();
+            return context.Products.Average(x => x.Price);
+        }
 
-        //public decimal ProductPriceBySteakBurger()
-        //{
-        //    using var context = new SignalRContext();
-        //    return context.Products.Where(x => x.Name == "Steak Burger").Select(y => y.Price).FirstOrDefault();
-        //}
+        public decimal ProductPriceBySteakBurger()
+        {
+            using var context = new SignalRContext();
+            return context.Products.Where(x => x.ProductName == "Steak Burger").Select(y => y.Price).FirstOrDefault();
+        }
 
-        //public decimal TotalPriceByDrinkCategory()
-        //{
-        //    using var context = new SignalRContext();
-        //    int id = context.Categories.Where(x => x.Name == "İçecek").Select(y => y.CategoryId).FirstOrDefault();
-        //    return context.Products.Where(x => x.CategoryId == id).Sum(y => y.Price);
-        //}
+        public decimal TotalPriceByDrinkCategory()
+        {
+            using var context = new SignalRContext();
+            int id = context.Categories.Where(x => x.CategoryName == "İçecek").Select(y => y.CategoryId).FirstOrDefault();
+            return context.Products.Where(x => x.CategoryId == id).Sum(y => y.Price);
+        }
 
-        //public decimal TotalPriceBySaladCategory()
-        //{
-        //    using var context = new SignalRContext();
-        //    int id = context.Categories.Where(x => x.Name == "Salata").Select(y => y.CategoryId).FirstOrDefault();
-        //    return context.Products.Where(x => x.CategoryId == id).Sum(y => y.Price);
-        //}
+        public decimal TotalPriceBySaladCategory()
+        {
+            using var context = new SignalRContext();
+            int id = context.Categories.Where(x => x.CategoryName == "Salata").Select(y => y.CategoryId).FirstOrDefault();
+            return context.Products.Where(x => x.CategoryId == id).Sum(y => y.Price);
+        }
     }
 }

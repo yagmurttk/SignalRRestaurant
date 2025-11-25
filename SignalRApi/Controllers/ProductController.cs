@@ -29,65 +29,65 @@ namespace SignalRApi.Controllers
             return Ok(value);
         }
 
-        //[HttpGet("ProductCount")]
-        //public IActionResult ProductCount()
-        //{
-        //    return Ok(_productService.TProductCount());
-        //}
+        [HttpGet("ProductCount")]
+        public IActionResult ProductCount()
+        {
+            return Ok(_productService.TProductCount());
+        }
 
-        //[HttpGet("TotalPriceByDrinkCategory")]
-        //public IActionResult TotalPriceByDrinkCategory()
-        //{
-        //    return Ok(_productService.TTotalPriceByDrinkCategory());
-        //}
+        [HttpGet("TotalPriceByDrinkCategory")]
+        public IActionResult TotalPriceByDrinkCategory()
+        {
+            return Ok(_productService.TTotalPriceByDrinkCategory());
+        }
 
-        //[HttpGet("TotalPriceBySaladCategory")]
-        //public IActionResult TotalPriceBySaladCategory()
-        //{
-        //    return Ok(_productService.TTotalPriceBySaladCategory());
-        //}
+        [HttpGet("TotalPriceBySaladCategory")]
+        public IActionResult TotalPriceBySaladCategory()
+        {
+            return Ok(_productService.TTotalPriceBySaladCategory());
+        }
 
-        //[HttpGet("ProductNameByMaxPrice")]
-        //public IActionResult ProductNameByMaxPrice()
-        //{
-        //    return Ok(_productService.TProductNameByMaxPrice());
-        //}
+        [HttpGet("ProductNameByMaxPrice")]
+        public IActionResult ProductNameByMaxPrice()
+        {
+            return Ok(_productService.TProductNameByMaxPrice());
+        }
 
-        //[HttpGet("ProductNameByMinPrice")]
-        //public IActionResult ProductNameByMinPrice()
-        //{
-        //    return Ok(_productService.TProductNameByMinPrice());
-        //}
+        [HttpGet("ProductNameByMinPrice")]
+        public IActionResult ProductNameByMinPrice()
+        {
+            return Ok(_productService.TProductNameByMinPrice());
+        }
 
-        //[HttpGet("ProductAvgPriceByHamburger")]
-        //public IActionResult ProductAvgPriceByHamburger()
-        //{
-        //    return Ok(_productService.TProductAvgPriceByHamburger());
-        //}
+        [HttpGet("ProductAvgPriceByHamburger")]
+        public IActionResult ProductAvgPriceByHamburger()
+        {
+            return Ok(_productService.TProductAvgPriceByHamburger());
+        }
 
-        //[HttpGet("ProductCountByHamburger")]
-        //public IActionResult ProductCountByHamburger()
-        //{
-        //    return Ok(_productService.TProductCountByCategoryNameHamburger());
-        //}
+        [HttpGet("ProductCountByHamburger")]
+        public IActionResult ProductCountByHamburger()
+        {
+            return Ok(_productService.TProductCountByCategoryNameHamburger());
+        }
 
-        //[HttpGet("ProductCountByDrink")]
-        //public IActionResult ProductCountByDrink()
-        //{
-        //    return Ok(_productService.TProductCountByCategoryNameDrink());
-        //}
+        [HttpGet("ProductCountByDrink")]
+        public IActionResult ProductCountByDrink()
+        {
+            return Ok(_productService.TProductCountByCategoryNameDrink());
+        }
 
-        //[HttpGet("ProductPriceAvg")]
-        //public IActionResult ProductPriceAvg()
-        //{
-        //    return Ok(_productService.TProductPriceAvg());
-        //}
+        [HttpGet("ProductPriceAvg")]
+        public IActionResult ProductPriceAvg()
+        {
+            return Ok(_productService.TProductPriceAvg());
+        }
 
-        //[HttpGet("ProductPriceBySteakBurger")]
-        //public IActionResult ProductPriceBySteakBurger()
-        //{
-        //    return Ok(_productService.TProductPriceBySteakBurger());
-        //}
+        [HttpGet("ProductPriceBySteakBurger")]
+        public IActionResult ProductPriceBySteakBurger()
+        {
+            return Ok(_productService.TProductPriceBySteakBurger());
+        }
 
 
 
@@ -137,11 +137,11 @@ namespace SignalRApi.Controllers
             return Ok("Ürün Bilgisi Güncellendi");
         }
 
-        //[HttpGet("GetLast9Products")]
-        //public IActionResult GetLast9Products()
-        //{
-        //    var value = _productService.TGetLast9Products();
-        //    return Ok(value);
-        //}
+        [HttpGet("GetLast9Products")]
+        public IActionResult GetLast9Products()
+        {
+            var value = _productService.TGetLast9Products();
+            return Ok(value);
+        }
     }
 }
