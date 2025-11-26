@@ -1,7 +1,6 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+﻿﻿@{
+ViewData["Title"] = "Index";
+Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -17,7 +16,7 @@
 
             $(document).ready(() => {
 
-                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7186/SignalRHub").build();
+                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7157/SignalRHub").build();
                 $("#connstatus").text(connection.state);
                 connection.start().then(() => {
                     $("#connstatus").text(connection.state);
@@ -98,7 +97,7 @@
         <h4 class="page-title">Anlık İstatistik Sayfası</h4>
         <div class="row">
             <div class="col-md-3">
-                <div class="card card-stats card-danger">
+                <div class="card card-stats card-warning">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
@@ -136,7 +135,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-warning">
+                <div class="card card-stats card-danger">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
@@ -178,7 +177,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <div class="card card-stats card-success">
+                <div class="card card-stats card-warning">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
@@ -197,7 +196,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-danger">
+                <div class="card card-stats card-success">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
@@ -216,7 +215,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-primary">
+                <div class="card card-stats card-danger">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
@@ -235,7 +234,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-warning">
+                <div class="card card-stats card-primary">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
@@ -276,7 +275,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-primary">
+                <div class="card card-stats card-success">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
@@ -314,7 +313,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-success">
+                <div class="card card-stats card-primary">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
@@ -336,7 +335,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <div class="card card-stats card-primary">
+                <div class="card card-stats card-warning">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
@@ -355,7 +354,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-warning">
+                <div class="card card-stats card-success">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
@@ -374,7 +373,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-success">
+                <div class="card card-stats card-danger">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
@@ -393,7 +392,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-stats card-danger">
+                <div class="card card-stats card-primary">
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5">
