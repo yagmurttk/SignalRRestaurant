@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
+using SignalR.DtoLayer.MenuTableDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -22,20 +23,20 @@ namespace SignalRApi.Controllers
         {
             return Ok(_menuTableService.TMenuTableCount());
         }
-        //[HttpGet]
-        //public IActionResult MenuTableList()
-        //{
-        //    var values = _menuTableService.TGetListAll();
-        //    return Ok(_mapper.Map<List<ResultMenuTableDto>>(values));
-        //}
+        [HttpGet]
+        public IActionResult MenuTableList()
+        {
+            var values = _menuTableService.TGetListAll();
+            return Ok(_mapper.Map<List<ResultMenuTableDto>>(values));
+        }
         [HttpPost]
-        //public IActionResult CreateMenuTable(CreateMenuTableDto createMenuTableDto)
-        //{
-        //    createMenuTableDto.Status = false;
-        //    var value = _mapper.Map<MenuTable>(createMenuTableDto);
-        //    _menuTableService.TAdd(value);
-        //    return Ok("Masa Başarılı Bir Şekilde Eklendi");
-        //}
+        public IActionResult CreateMenuTable(CreateMenuTableDto createMenuTableDto)
+        {
+            createMenuTableDto.Status = false;
+            var value = _mapper.Map<MenuTable>(createMenuTableDto);
+            _menuTableService.TAdd(value);
+            return Ok("Masa Başarılı Bir Şekilde Eklendi");
+        }
         [HttpDelete("{id}")]
         public IActionResult DeleteMenuTable(int id)
         {
@@ -43,19 +44,19 @@ namespace SignalRApi.Controllers
             _menuTableService.TDelete(value);
             return Ok("Masa Silindi");
         }
-        //[HttpPut]
-        //public IActionResult UpdateMenuTable(UpdateMenuTableDto updateMenuTableDto)
-        //{
-        //    var value = _mapper.Map<MenuTable>(updateMenuTableDto);
-        //    _menuTableService.TUpdate(value);
-        //    return Ok("Masa Bilgisi Güncellendi");
-        //}
-        //[HttpGet("{id}")]
-        //public IActionResult GetMenuTable(int id)
-        //{
-        //    var value = _menuTableService.TGetById(id);
-        //    return Ok(_mapper.Map<GetMenuTableDto>(value));
-        //}
+        [HttpPut]
+        public IActionResult UpdateMenuTable(UpdateMenuTableDto updateMenuTableDto)
+        {
+            var value = _mapper.Map<MenuTable>(updateMenuTableDto);
+            _menuTableService.TUpdate(value);
+            return Ok("Masa Bilgisi Güncellendi");
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetMenuTable(int id)
+        {
+            var value = _menuTableService.TGetById(id);
+            return Ok(_mapper.Map<GetMenuTableDto>(value));
+        }
 
         [HttpGet("ChangeMenuTableStatusToTrue")]
         public IActionResult ChangeMenuTableStatusToTrue(int id)

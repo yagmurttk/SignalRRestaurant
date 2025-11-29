@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SignalR.BusinessLayer.Concrete
 {
-    public class MenuTableManager:IMenuTableService
+    public class MenuTableManager : IMenuTableService
     {
         private readonly IMenuTableDal _menuTableDal;
         public MenuTableManager(IMenuTableDal menuTableDal)
@@ -39,7 +39,7 @@ namespace SignalR.BusinessLayer.Concrete
 
         public MenuTable TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _menuTableDal.GetById(id);
         }
 
         public List<MenuTable> TGetListAll()
