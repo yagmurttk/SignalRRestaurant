@@ -12,8 +12,8 @@ namespace SignalRApi.Hubs
         private readonly IMoneyCaseService _moneyCasesService;
         private readonly IMenuTableService _menuTableService;
         private readonly IBookingService _bookingService;
-        //private readonly INotificationService _notificationservice;
-        public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCasesService, IMenuTableService menuTableService, IBookingService bookingService/* INotificationService notificationservice*/)
+        private readonly INotificationService _notificationservice;
+        public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCasesService, IMenuTableService menuTableService, IBookingService bookingService, INotificationService notificationservice)
         {
             _categoryService = categoryService;
             _productService = productService;
@@ -21,7 +21,7 @@ namespace SignalRApi.Hubs
             _moneyCasesService = moneyCasesService;
             _menuTableService = menuTableService;
             _bookingService = bookingService;
-            //_notificationservice = notificationservice;
+            _notificationservice = notificationservice;
         }
         public static int ClientCount { get; set; } = 0;
         public async Task SendStatistics()
@@ -97,15 +97,15 @@ namespace SignalRApi.Hubs
         }
 
 
-        //public async Task SendNotification()
-        //{
-        //    var value = _notificationservice.TNotificationCountByStatusFalse();
-        //    await Clients.All.SendAsync("ReceiveNotificationCountByFalse", value);
+        public async Task SendNotification()
+        {
+            var value = _notificationservice.TNotificationCountByStatusFalse();
+            await Clients.All.SendAsync("ReceiveNotificationCountByFalse", value);
 
-        //    var notificationListByFalse = _notificationservice.TGetAllNotificationByFalse();
-        //    await Clients.All.SendAsync("ReceiveNotificationListByFalse", notificationListByFalse);
+            var notificationListByFalse = _notificationservice.TGetAllNotificationByFalse();
+            await Clients.All.SendAsync("ReceiveNotificationListByFalse", notificationListByFalse);
 
-        //}
+        }
 
 
         public async Task GetMenuTableStatus()
