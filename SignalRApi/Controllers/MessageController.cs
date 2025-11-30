@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DtoLayer.MessageDto;
@@ -11,34 +12,27 @@ namespace SignalRApi.Controllers
     public class MessageController : ControllerBase
     {
         private readonly IMessageService _messageService;
-
-        public MessageController(IMessageService messageService)
+        private readonly IMapper _mapper;
+        public MessageController(IMessageService messageService, IMapper mapper)
         {
             _messageService = messageService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult MessageList()
         {
             var values = _messageService.TGetListAll();
-            return Ok(values);
+            return Ok(_mapper.Map<List<ResultMessageDto>>(values));
         }
         [HttpPost]
-        public IActionResult CreateAbout(CreateMessageDto createMessageDto)
+        public IActionResult CreateMessage(CreateMessageDto createMessageDto)
         {
-            Message message = new Message()
-            {
-                Mail = createMessageDto.Mail,
-                Content = createMessageDto.Content,
-                SendDate = DateTime.Now,
-                Name = createMessageDto.Name,
-                Surname = createMessageDto.Surname,
-                PhoneNumber = createMessageDto.PhoneNumber,
-                MessageStatus = false,
-                Subject = createMessageDto.Subject,
-            };
-            _messageService.TAdd(message);
-            return Ok("Mesaj Başarıyla Gönderildi");
+            createMessageDto.MessageStatus = false;
+            createMessageDto.SendDate = DateTime.Now;
+            var value = _mapper.Map<Message>(createMessageDto);
+            _messageService.TAdd(value);
+            return Ok("Mesaj Başarılı Bir Şekilde Gönderildi");
         }
         [HttpDelete("{id}")]
         public IActionResult DeleteMessage(int id)
@@ -46,6 +40,13 @@ namespace SignalRApi.Controllers
             var value = _messageService.TGetById(id);
             _messageService.TDelete(value);
             return Ok("Mesaj Silindi");
+        }
+        [HttpPut]
+        public IActionResult UpdateMessage(UpdateMessageDto updateMessageDto)
+        {
+            var value = _mapper.Map<Message>(updateMessageDto);
+            _messageService.TUpdate(value);
+            return Ok("Mesaj Bilgisi Güncellendi");
         }
         [HttpGet("{id}")]
         public IActionResult GetMessage(int id)
