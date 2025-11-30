@@ -63,18 +63,18 @@ namespace SignalRApi.Controllers
             return Ok(_mapper.Map<GetBookingDto>(value));
         }
 
-    //    [HttpGet("BookingStatusApproved/{id}")]
-    //    public IActionResult BookingStatusApproved(int id)
-    //    {
-    //        _bookingService.BookingStatusApproved(id);
-    //        return Ok("Rezervasyon Açıklaması Değiştirildi");
-    //    }
-    //    [HttpGet("BookingStatusCancelled/{id}")]
-    //    public IActionResult BookingStatusCancelled(int id)
-    //    {
-    //        _bookingService.BookingStatusCancelled(id);
-    //        return Ok("Rezervasyon Açıklaması Değiştirildi");
-    //    }
-   
+        [HttpGet("BookingStatusApproved/{id}")]
+        public IActionResult BookingStatusApproved(int id)
+        {
+            _bookingService.TBookingStatusApproved(id);
+            return Ok("Rezervasyon Açıklaması Değiştirildi");
+        }
+        [HttpGet("BookingStatusCancelled/{id}")]
+        public IActionResult BookingStatusCancelled(int id)
+        {
+            _bookingService.TBookingStatusCancelled(id);
+            return Ok("Rezervasyon Açıklaması Değiştirildi");
+        }
+
     }
 }
