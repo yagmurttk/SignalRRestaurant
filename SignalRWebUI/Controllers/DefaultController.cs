@@ -2,8 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using SignalRWebUI.Dtos.MessageDtos;
+using SignalR.DtoLayer.ContactDto;
+using SignalR.DtoLayer.MessageDto;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json.Nodes;
 
 namespace SignalRWebUI.Controllers
 {

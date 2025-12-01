@@ -52,7 +52,7 @@ namespace SignalRApi.Controllers
         public IActionResult GetMessage(int id)
         {
             var value = _messageService.TGetById(id);
-            return Ok(value);
+            return Ok(_mapper.Map<GetByIdMessageDto>(value));
         }
     }
 }

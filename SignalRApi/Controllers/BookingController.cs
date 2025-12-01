@@ -15,12 +15,12 @@ namespace SignalRApi.Controllers
         private readonly IMapper _mapper;
         //private readonly IValidator<CreateBookingDto> _validator;
 
-        //public BookingController(IBookingService bookingService, IMapper mapper, IValidator<CreateBookingDto> validator)
-        //{
-        //    _bookingService = bookingService;
-        //    _mapper = mapper;
-        //    _validator = validator;
-        //}
+        public BookingController(IBookingService bookingService, IMapper mapper /*IValidator<CreateBookingDto> validator*/)
+        {
+            _bookingService = bookingService;
+            _mapper = mapper;
+            //_validator = validator;
+        }
         [HttpGet]
         public IActionResult BookingList()
         {
@@ -28,17 +28,17 @@ namespace SignalRApi.Controllers
             return Ok(_mapper.Map<List<ResultBookingDto>>(values));
         }
         [HttpPost]
-        //public IActionResult CreateBooking(CreateBookingDto createBookingDto)
-        //{
-        //    var validationResult = _validator.Validate(createBookingDto);
-        //    if (!validationResult.IsValid)
-        //    {
-        //        return BadRequest(validationResult.Errors);
-        //    }
-        //    var value = _mapper.Map<Booking>(createBookingDto);
-        //    _bookingService.TAdd(value);
-        //    return Ok("Rezervasyon Yapıldı");
-        //}
+        public IActionResult CreateBooking(CreateBookingDto createBookingDto)
+        {
+            //    var validationResult = _validator.Validate(createBookingDto);
+            //    if (!validationResult.IsValid)
+            //    {
+            //        return BadRequest(validationResult.Errors);
+            //    }
+            var value = _mapper.Map<Booking>(createBookingDto);
+            _bookingService.TAdd(value);
+            return Ok("Rezervasyon Yapıldı");
+        }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)

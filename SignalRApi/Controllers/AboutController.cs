@@ -23,12 +23,12 @@ namespace SignalRApi.Controllers
         public IActionResult AboutList()
         {
             var values = _aboutService.TGetListAll();
-            return Ok(values);
+            return Ok(_mapper.Map<List<ResultAboutDto>>(values));
         }
         [HttpPost]
         public IActionResult CreateAbout(CreateAboutDto createAboutDto)
         {
-            var value = _mapper.Map<About>(createAboutDto);
+            var value = _mapper.Map<About>(createAboutDto); 
             _aboutService.TAdd(value);
             return Ok("Hakkımda Kısmı Başarılı Bir Şekilde Eklendi");
         }
