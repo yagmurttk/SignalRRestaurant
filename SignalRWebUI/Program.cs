@@ -5,27 +5,30 @@ using SignalR.EntityLayer.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-
+// Global authorize policy
+var requireAuthorizePolicy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
 
 // Add services to the container.
-
 builder.Services.AddDbContext<SignalRContext>();
 
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<SignalRContext>();
+builder.Services.AddIdentity<AppUser, AppRole>()
+    .AddEntityFrameworkStores<SignalRContext>();
 
 builder.Services.AddHttpClient();
 
-builder.Services.AddControllersWithViews(opt => // project genelinde authorize iþlemi yapar
+builder.Services.AddControllersWithViews(opt =>
 {
+    // Proje genelinde authorize gerektirir
     opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
 });
 
-builder.Services.ConfigureApplicationCookie(opts => // login sayfasýný belirler
+// Identity cookie ayarlarý
+builder.Services.ConfigureApplicationCookie(opts =>
 {
     opts.LoginPath = "/Login/Index";
 });
-
 
 var app = builder.Build();
 
@@ -33,7 +36,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -41,6 +43,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// ? Eksik olan eklendi (çok önemli)
+app.UseAuthentication();
 
 app.UseAuthorization();
 
