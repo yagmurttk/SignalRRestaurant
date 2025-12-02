@@ -17,13 +17,13 @@ namespace SignalRWebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            //HttpClient client = new HttpClient();
-            //HttpResponseMessage response = await client.GetAsync("https://localhost:7157/api/Contact");
-            //response.EnsureSuccessStatusCode();
-            //string responseBody = await response.Content.ReadAsStringAsync();
-            //JArray item = JArray.Parse(responseBody);
-            //string value = item[0]["location"].ToString();
-            //ViewBag.location = value;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://localhost:7157/api/Contact");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            JArray item = JArray.Parse(responseBody);
+            string value = item[0]["location"].ToString();
+            ViewBag.location = value;
             return View();
         }
 
@@ -32,15 +32,15 @@ namespace SignalRWebUI.Controllers
         {
 
             createBookingDto.PersonCount = 2;
-            //HttpClient client2 = new HttpClient();
-            //HttpResponseMessage response = await client2.GetAsync("https://localhost:7157/api/Contact");
-            //response.EnsureSuccessStatusCode();
-            //string responseBody = await response.Content.ReadAsStringAsync();
-            //JArray item = JArray.Parse(responseBody);
-            //string value = item[0]["location"].ToString();
-            //ViewBag.location = value;
+            HttpClient client2 = new HttpClient();
+            HttpResponseMessage response = await client2.GetAsync("https://localhost:7157/api/Contact");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            JArray item = JArray.Parse(responseBody);
+            string value = item[0]["location"].ToString();
+            ViewBag.location = value;
 
-            //createBookingDto.Description = "b";
+            createBookingDto.Description = "b";
 
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createBookingDto);

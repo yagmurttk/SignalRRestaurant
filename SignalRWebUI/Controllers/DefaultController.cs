@@ -20,12 +20,6 @@ namespace SignalRWebUI.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //var client = _httpClientFactory.CreateClient();
-            //var responseMessage = await client.GetAsync("https://localhost:7157/api/Contact");
-            //var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            ////var values = JsonConvert.DeserializeObject<ResultContactDto>(jsonData);
-            //JsonObject item=JsonObject.Parse(jsonData);
-            //ViewBag.location = jsonData[0].ToString();
 
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync("https://localhost:7157/api/Contact");
